@@ -6,7 +6,7 @@
 
 ## What It Does
 
-This project detects anomalies in spacecraft telemetry data without requiring labeled examples. It processes multivariate time series signals from multiple sensor channels simultaneously, reconstructs normal behavior using an autoencoder, and flags anomalies based on per-series distributional scoring — giving channel-level precision on where and when something goes wrong.
+This project detects anomalies in spacecraft telemetry data without requiring labeled examples. It processes multivariate time series signals from multiple sensor channels simultaneously, reconstructs normal behavior using an autoencoder, and flags anomalies based on per-series distributional scoring, giving channel-level precision on where and when something goes wrong.
 
 ---
 
@@ -92,3 +92,32 @@ python run_ablation.py
 ---
 
 ## Project Structure
+├── data/
+│   └── raw/
+│       ├── test/                   # Raw test telemetry channels
+│       ├── train/                  # Raw train telemetry channels
+│       └── labeled_anomalies.csv   # Ground truth anomaly labels (eval only)
+├── notebooks/                      # Exploratory and analysis notebooks
+├── results/                        # Output scores, plots, and metrics
+├── src/                            # Core source code (models, utilities, etc.)
+├── venv/                           # Virtual environment (not tracked in git)
+├── inspect_data.py                 # Data inspection and sanity checks
+├── plot_results.py                 # Visualization of anomaly detection results
+├── requirements.txt                # Python dependencies
+├── run_ablation.py                 # Ablation study experiments
+├── test_gpu.py                     # GPU availability check
+├── train.py                        # Model training entry point
+└── README.md
+
+---
+
+## Use Case
+
+Spacecraft generate continuous streams of telemetry across hundreds of sensors. Traditional threshold-based monitoring fails to capture complex, correlated anomalies. This project addresses that gap with a learned, data-driven approach that adapts to the normal behavior of each sensor channel independently, making it suitable for real operational settings where anomaly labels are scarce or unavailable.
+
+---
+
+## License
+
+MIT License — Copyright (c) 2026 Kennedy Koomson Adjei
+
